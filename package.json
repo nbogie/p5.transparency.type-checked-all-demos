@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "pnpm run type-check && vite build",
     "preview": "vite preview",
-    "type-check": "tsc --noEmit",
+    "type-check": "tsc -p ts-global && tsc -p ts-instance && tsc -p tsconfig.node.json",
     "refresh-p5-transparency": "pnpm --dir ../../p5.transparency run build && pnpm --dir ../../p5.transparency pack && pnpm install --force"
   },
   "devDependencies": {
