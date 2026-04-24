@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>vanilla-js sketches — mixed-p5-typedecls-demo</title>
+    </head>
+    <body>
+        <h1>Vanilla-JS sketches</h1>
+        <p>
+            Each of these loads p5 and p5.transparency from CDN and runs
+            <code>sketch.js</code> directly — no Vite, no bundler. Open this
+            file from the filesystem or let Vite dev serve it; either works.
+        </p>
+        <ul>
+            <li>
+                <a href="vanilla-js-global/index.html">vanilla-js-global</a>
+                — p5 global mode, type-checked via jsconfig + node_modules.
+            </li>
+            <li>
+                <a href="vanilla-js-global-standalone/index.html"
+                    >vanilla-js-global-standalone</a
+                >
+                — p5 global mode, type-checked against bundled
+                <code>types/</code> (no node_modules needed for type check).
+            </li>
+            <li>
+                <a href="vanilla-js-instance/index.html">vanilla-js-instance</a>
+                — p5 instance mode, type-checked via jsconfig + node_modules.
+            </li>
+            <li>
+                <a href="vanilla-js-instance-standalone/index.html"
+                    >vanilla-js-instance-standalone</a
+                >
+                — p5 instance mode, type-checked against bundled
+                <code>types/</code>.
+            </li>
+        </ul>
+    </body>
+</html>

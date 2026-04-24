@@ -14,7 +14,9 @@ A learning/demo project exploring how p5.js v2 types and p5.transparency addon t
 
 There is no root `tsconfig.json`. Each TS folder has its own tsconfig so the two sketches can be type-checked independently — `p5/global` would otherwise pollute instance mode's environment. `tsconfig.node.json` covers `vite.config.ts`. `pnpm run type-check` runs all three sequentially. This also keeps the vanilla-js-* folders unambiguously out of any TS config parent chain (they use their own jsconfig).
 
-Running a TS sketch: three HTML entries at the project root. `index.html` is a navigation page linking to the other two. `global.html` loads `/ts-global/main.ts`, `instance.html` loads `/ts-instance/main.ts`. Vite dev serves all three automatically; `vite.config.ts` declares all three in `build.rollupOptions.input` so `pnpm run build` emits separate bundles for each.
+Running a TS sketch: three HTML entries at the project root. `index.html` is a navigation page linking to the others. `global.html` loads `/ts-global/main.ts`, `instance.html` loads `/ts-instance/main.ts`. Vite dev serves all three automatically; `vite.config.ts` declares all three in `build.rollupOptions.input` so `pnpm run build` emits separate bundles for each.
+
+`vanilla-js.html` (also at root) is a nav page linking to the four `vanilla-js-*/index.html` sketches. Those sketches don't use Vite — they load p5 + p5.transparency from CDN via `<script>` tags and run directly from the filesystem or any static server. `vanilla-js.html` is not added to Vite's `rollupOptions.input` on purpose: the vanilla folders aren't part of the Vite build and those links would dangle in `dist/`. Vite dev still serves it as static content at `/vanilla-js.html`.
 
 ## Current install shape (as of this session)
 
@@ -60,8 +62,9 @@ Would be a separate upstream issue if you want to pursue it.
 - `preserveSymlinks` no longer set anywhere.
 - `p5.transparency/.gitignore` now excludes `*.tgz`.
 - `P5_UPSTREAM_ISSUE_DRAFT.md` — reviewed by user, pending post.
-- Split tsconfigs: per-folder `ts-global/tsconfig.json`, `ts-instance/tsconfig.json`, plus `tsconfig.node.json` for vite config. No root `tsconfig.json`. `pnpm run type-check` runs all three.
-- All five TS/JS variants (ts-global, ts-instance, vanilla-js-global, vanilla-js-instance, vanilla-js-instance-standalone) type-check; `pnpm run build` succeeds.
+- Split tsconfigs: per-folder `ts-global/tsconfig.json`, `ts-instance/tsconfig.json`, plus `tsconfig.node.json` for vite config. No root `tsconfig.json`.
+- `pnpm run type-check` aggregates all per-target sub-scripts via pnpm's regex-run (`/^type-check:/`). Each target is individually runnable (e.g. `pnpm run type-check:ts-instance`). Covers all seven: ts-global, ts-instance, vite config, vanilla-js-global, vanilla-js-global-standalone, vanilla-js-instance, vanilla-js-instance-standalone.
+- All targets pass; `pnpm run build` (runs type-check then Vite) succeeds.
 
 ## Open / next steps
 
@@ -74,13 +77,11 @@ Would be a separate upstream issue if you want to pursue it.
 ```
 cd /Users/neill/Developer/native/neillplay/mixed-p5-typedecls-demo
 
-# TS side (ts-global, ts-instance, vite.config.ts) — all three in sequence
+# All targets (ts-global, ts-instance, vite config, all four vanilla-js-*)
 pnpm run type-check
 
-# Vanilla-JS side — separate because they use jsconfig
-pnpm exec tsc --project vanilla-js-global/jsconfig.json --noEmit
-pnpm exec tsc --project vanilla-js-instance/jsconfig.json --noEmit
-pnpm exec tsc --project vanilla-js-instance-standalone/jsconfig.json --noEmit
+# Or just one target
+pnpm run type-check:ts-instance
 
 # Full build (runs type-check, then vite build)
 pnpm run build
