@@ -32,7 +32,3 @@ function makeRandomLocations() {
     }
     return arr;
 }
-
-// p5 global mode picks up `setup` and `draw` from window.
-window.setup = setup;
-window.draw = draw;

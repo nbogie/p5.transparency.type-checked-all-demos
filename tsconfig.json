@@ -20,5 +20,5 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": ["src"],
-  "exclude": ["vanilla-js"]
+  "exclude": ["vanilla-js-global", "vanilla-js-instance"]
 }

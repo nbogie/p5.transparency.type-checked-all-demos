@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "checkJs": true,
+    "target": "ES2020",
+    "lib": ["ES2020", "DOM"],
+    "noEmit": true,
+    "types": ["p5", "p5.transparency"]
+  },
+  "include": ["sketch.js", "types.d.ts"]
+}

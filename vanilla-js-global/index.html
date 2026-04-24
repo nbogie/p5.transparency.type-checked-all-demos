@@ -9,8 +9,16 @@
         <script src="https://cdn.jsdelivr.net/npm/p5@2.2.3/lib/p5.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/p5.transparency@0.0.17/p5.transparency.min.js"></script>
 
-        <!-- local custom version with more debugging -->
+        <!-- alternatively, use local custom version with more debugging -->
         <!-- <script src="../node_modules/p5.transparency/p5.transparency.js"></script> -->
+
         <script src="sketch.js"></script>
+
+        This project refers to the types via types.d.ts, which will have to be
+        resolved from somewhere.
+        <pre>
+            /// &lt;reference types="p5/global" /&gt;
+            /// &lt;reference types="p5.transparency" /&gt;
+        </pre>
     </body>
 </html>
