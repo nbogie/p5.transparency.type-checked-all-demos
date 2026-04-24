@@ -33,7 +33,9 @@ const sketch = (p) => {
     function makeRandomLocations() {
         const arr = [];
         for (let i = 0; i < 10; i++) {
-            const location = p5.Vector.random3D().mult(p.sqrt(p.random())).mult(300);
+            const location = p5.Vector.random3D()
+                .mult(p.sqrt(p.random()))
+                .mult(300);
             arr.push(location);
         }
         return arr;
