@@ -1,17 +1,8 @@
 export {};
 
 /// <reference types="p5/global" />
-/// <reference types="p5.transparency" />
-
-// Module augmentation so p.drawTransparent() / p.drawTwoSided() are typed on
-// imported p5 instances. p5.transparency ships only a global interface augmentation
-// (works for global mode); instance mode also needs a module augmentation.
-declare module 'p5' {
-  interface p5 {
-    drawTransparent(cb: () => void): void;
-    drawTwoSided(cb: () => void): void;
-  }
-}
+// p5.transparency module augmentation (`declare module 'p5'`) now ships in the
+// library's own .d.ts — no local repeat needed.
 
 declare global {
   // p5 v2's `export default` + `export as namespace` leaves the UMD global as a
