@@ -1,3 +1,5 @@
+/* Master copy. public/styles.css is a generated duplicate — edit this file.
+   See package.json `sync-styles`; runs automatically before `pnpm run dev` and `pnpm run build`. */
 body {
     font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     max-width: 960px;
@@ -5,7 +7,18 @@ body {
     padding: 0 1em 4em;
     line-height: 1.55;
     color: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
+
+/* Visual order: back-link, h1, [canvas + anything p5 appends to body], metadata table.
+   Any element not matched by a more specific rule (canvas, p5-created divs, #app) falls
+   into the catch-all with order 2, landing between the heading and the metadata. */
+body > * { order: 2; }
+body > p { order: 0; }
+body > h1 { order: 1; }
+body > table.metadata { order: 3; width: 100%; }
 
 h1 {
     margin: 0.4em 0 1em;

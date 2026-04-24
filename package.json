@@ -4,9 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "pnpm run type-check && vite build",
+    "dev": "pnpm run sync-styles && vite",
+    "build": "pnpm run sync-styles && pnpm run type-check && vite build",
     "preview": "vite preview",
+    "sync-styles": "cp styles.css public/styles.css",
     "type-check": "pnpm run \"/^type-check:/\"",
     "type-check:ts-global": "tsc -p ts-global",
     "type-check:ts-instance": "tsc -p ts-instance",
