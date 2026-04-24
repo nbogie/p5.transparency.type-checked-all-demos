@@ -3,11 +3,7 @@
 // Load p5 in global mode: this registers all p5 APIs on window and the
 // `declare global {}` block in p5/global brings types into scope globally.
 import p5 from "p5/global";
-
-// p5.transparency is a UMD addon loaded via <script defer> in index.html.
-// defer guarantees it runs after this module (and thus after p5 is globally available)
-// but before DOMContentLoaded, where p5 starts the sketch.
-// Types come from tsconfig types: ["p5.transparency"].
+import "p5.transparency";
 
 // ----- sketch ----------------------------------------------------------------
 let locations: any;
