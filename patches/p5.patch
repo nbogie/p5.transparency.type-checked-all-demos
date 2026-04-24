@@ -1,0 +1,22 @@
+diff --git a/types/p5.d.ts b/types/p5.d.ts
+index 4fd9d9b5d63f9100b6ff6009c1dec55a82d419a3..35ab0e922f31edb980bfa5bb4cca0c197c810956 100644
+--- a/types/p5.d.ts
++++ b/types/p5.d.ts
+@@ -1615,7 +1615,7 @@ declare const EXCLUDE: Symbol;
+ 
+ declare const __EXCLUDE: typeof EXCLUDE;
+ 
+-declare class p5 {
++export declare class p5 {
+   constructor(sketch?: (p: p5) => void, node?: HTMLElement, sync?: boolean);
+ 
+   /**
+@@ -11843,7 +11843,7 @@ declare class p5 {
+ 
+ declare const __p5: typeof p5;
+ 
+-declare namespace p5 {
++export declare namespace p5 {
+   const p5: typeof __p5;
+ 
+ const VIDEO: typeof __VIDEO;

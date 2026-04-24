@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "refresh-p5-transparency": "pnpm --dir ../../p5.transparency run build && pnpm --dir ../../p5.transparency pack && pnpm install --force"
   },
   "devDependencies": {
     "typescript": "~6.0.2",
@@ -15,6 +16,6 @@
   },
   "dependencies": {
     "p5": "^2.2.3",
-    "p5.transparency": "link:/Users/neill/Developer/native/p5.transparency"
+    "p5.transparency": "file:../../p5.transparency/p5.transparency-0.0.17.tgz"
   }
 }

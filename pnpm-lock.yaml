@@ -4,16 +4,21 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  p5:
+    hash: 8f20fda259c27faf85216395f01861ca9a11ae1eb17deaea04b5ff685e0f58e4
+    path: patches/p5.patch
+
 importers:
 
   .:
     dependencies:
       p5:
         specifier: ^2.2.3
-        version: 2.2.3
+        version: 2.2.3(patch_hash=8f20fda259c27faf85216395f01861ca9a11ae1eb17deaea04b5ff685e0f58e4)
       p5.transparency:
-        specifier: link:/Users/neill/Developer/native/p5.transparency
-        version: link:../../p5.transparency
+        specifier: file:../../p5.transparency/p5.transparency-0.0.17.tgz
+        version: file:../../p5.transparency/p5.transparency-0.0.17.tgz(p5@2.2.3(patch_hash=8f20fda259c27faf85216395f01861ca9a11ae1eb17deaea04b5ff685e0f58e4))
     devDependencies:
       typescript:
         specifier: ~6.0.2
@@ -295,6 +300,12 @@ packages:
   omggif@1.0.10:
     resolution: {integrity: sha512-LMJTtvgc/nugXj0Vcrrs68Mn2D1r0zf630VNtqtpI1FEO7e+O9FP4gqs9AcnBaSEeoHIPm28u6qgPR0oyEpGSw==}
 
+  p5.transparency@file:../../p5.transparency/p5.transparency-0.0.17.tgz:
+    resolution: {integrity: sha512-ITBy2n7lGci8oA5iUftPEVH1XUJk/plHinz8Y/HdhxNFX+GN7PcS3jA1oN4f6WgVR3fEUhyTONnY3cM8hyGa8A==, tarball: file:../../p5.transparency/p5.transparency-0.0.17.tgz}
+    version: 0.0.17
+    peerDependencies:
+      p5: ^2.0.0
+
   p5@2.2.3:
     resolution: {integrity: sha512-jz9uy0k3Fcj9vKSOafQlIrpaPZZjO4rAEBZF6dGkbokisshP0M3aFm4qtLHYCoEW1XJSkFaVaOMILCQAQxUHHA==}
 
@@ -568,7 +579,11 @@ snapshots:
 
   omggif@1.0.10: {}
 
-  p5@2.2.3:
+  p5.transparency@file:../../p5.transparency/p5.transparency-0.0.17.tgz(p5@2.2.3(patch_hash=8f20fda259c27faf85216395f01861ca9a11ae1eb17deaea04b5ff685e0f58e4)):
+    dependencies:
+      p5: 2.2.3(patch_hash=8f20fda259c27faf85216395f01861ca9a11ae1eb17deaea04b5ff685e0f58e4)
+
+  p5@2.2.3(patch_hash=8f20fda259c27faf85216395f01861ca9a11ae1eb17deaea04b5ff685e0f58e4):
     dependencies:
       '@davepagurek/bezier-path': 0.0.7
       '@japont/unicode-range': 1.0.0

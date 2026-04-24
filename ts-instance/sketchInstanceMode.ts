@@ -1,7 +1,11 @@
 // Global-mode p5 typescript sketch with p5.transparency addon
 import p5 from "p5";
 import transparency from "p5.transparency";
-(p5 as any).registerAddon(transparency);
+
+//only possible with p5 types patch
+p5.registerAddon(transparency);
+// necessary without p5 types patch
+// (p5 as any).registerAddon(transparency);
 
 new p5(sketch);
 
