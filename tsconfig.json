@@ -1,24 +1,29 @@
 {
-  "compilerOptions": {
-    "target": "es2023",
-    "module": "esnext",
-    "lib": ["ES2023", "DOM"],
-    "types": ["vite/client", "p5.transparency"],
-    "skipLibCheck": true,
+    "compilerOptions": {
+        "target": "es2023",
+        "module": "esnext",
+        "lib": ["ES2023", "DOM"],
+        "types": ["vite/client", "p5.transparency"],
+        "skipLibCheck": true,
 
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "verbatimModuleSyntax": true,
-    "moduleDetection": "force",
-    "noEmit": true,
+        /* Bundler mode */
+        "moduleResolution": "bundler",
+        "allowImportingTsExtensions": true,
+        "verbatimModuleSyntax": true,
+        "moduleDetection": "force",
+        "noEmit": true,
 
-    /* Linting */
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "erasableSyntaxOnly": true,
-    "noFallthroughCasesInSwitch": true
-  },
-  "include": ["src"],
-  "exclude": ["vanilla-js-global", "vanilla-js-instance"]
+        /* Linting */
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "erasableSyntaxOnly": true,
+        "noFallthroughCasesInSwitch": true
+    },
+    "include": ["src"],
+    "exclude": [
+        "vanilla-js-global",
+        "vanilla-js-global-standalone",
+        "vanilla-js-instance",
+        "vanilla-js-instance-standalone"
+    ]
 }
