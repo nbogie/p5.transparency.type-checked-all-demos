@@ -1,1 +1,2 @@
-import './sketch.ts';
+import "./sketchGlobalMode.ts";
+// import "./sketchInstanceMode.ts";
