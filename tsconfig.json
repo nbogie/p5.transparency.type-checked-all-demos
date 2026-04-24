@@ -19,7 +19,9 @@
         "erasableSyntaxOnly": true,
         "noFallthroughCasesInSwitch": true
     },
-    "include": ["src"],
+    //one or the other, but not both - global sketch import will pollute global for true test of instance-mode sketch
+    // "include": ["ts-global"],
+    "include": ["ts-instance"],
     "exclude": [
         "vanilla-js-global",
         "vanilla-js-global-standalone",
