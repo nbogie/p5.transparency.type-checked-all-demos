@@ -1,3 +1,5 @@
+import type {} from 'p5';  // required to activate the module augmentation below
+
 declare function transparency(p5: Function, fn?: object): void;
 export default transparency;
 

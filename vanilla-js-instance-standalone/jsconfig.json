@@ -2,7 +2,12 @@
     "compilerOptions": {
         "target": "ES6",
         "lib": ["ES2020", "DOM"],
-        "checkJs": true
+        "checkJs": true,
+        "ignoreDeprecations": "6.0",
+        "baseUrl": ".",
+        "paths": {
+            "p5": ["types/p5.d.ts"]
+        }
     },
     "include": ["**/*.js", "types/*.d.ts"]
 }
