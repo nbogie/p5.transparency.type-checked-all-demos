@@ -4,10 +4,96 @@
         <meta charset="UTF-8" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./styles.css" />
         <title>ts-instance — mixed-p5-typedecls-demo</title>
     </head>
     <body>
         <p><a href="/index.html">← back to index</a></p>
+        <h1>ts-instance</h1>
+        <table class="metadata">
+            <tr>
+                <th>Sketch language</th>
+                <td>
+                    <span class="value">TypeScript (ESM)</span>
+                    <span class="detail">— entry <code>/ts-instance/main.ts</code>, bundled by Vite</span>
+                </td>
+            </tr>
+            <tr>
+                <th>p5 mode</th>
+                <td>
+                    <span class="value">instance</span>
+                    <span class="detail">— <code>import p5 from "p5"</code>, sketch receives <code>p</code>, no <code>window</code> pollution</span>
+                </td>
+            </tr>
+            <tr>
+                <th>Type config</th>
+                <td>
+                    <span class="value"><code>ts-instance/tsconfig.json</code></span>
+                    <span class="detail">— <code>types: ["vite/client", "p5.transparency"]</code></span>
+                </td>
+            </tr>
+            <tr>
+                <th>p5 runtime</th>
+                <td>
+                    <span class="value"><code>node_modules/p5</code></span>
+                    <span class="detail">— upstream <code>2.2.3</code>, bundled by Vite</span>
+                </td>
+            </tr>
+            <tr>
+                <th>p5 types</th>
+                <td>
+                    <span class="value"><code>node_modules/p5</code></span>
+                    <span class="detail">— with the pnpm patch applied; without it, <code>p.drawTransparent()</code> would fail to type-check (module augmentation can't merge into a default-only-exported class)</span>
+                </td>
+            </tr>
+            <tr>
+                <th>p5.transparency runtime</th>
+                <td>
+                    <span class="value"><code>node_modules/p5.transparency</code></span>
+                    <span class="detail">— from the local-clone <strong>tarball</strong>, bundled by Vite</span>
+                </td>
+            </tr>
+            <tr>
+                <th>p5.transparency types</th>
+                <td>
+                    <span class="value"><code>node_modules/p5.transparency/p5.transparency.d.ts</code></span>
+                    <span class="detail">— <code>declare module 'p5' { interface p5 }</code> merges addon methods into the p5 instance type</span>
+                </td>
+            </tr>
+            <tr>
+                <th>Type patches</th>
+                <td>
+                    <span class="value">p5, p5.transparency</span>
+                    <span class="detail">— p5 via pnpm patch (the critical piece for instance-mode augmentation); p5.transparency via rewritten <code>.d.ts</code> in the local clone</span>
+                </td>
+            </tr>
+            <tr>
+                <th>Runtime patches</th>
+                <td>
+                    <span class="value">p5.transparency</span>
+                    <span class="detail">— <code>const</code>→<code>let</code> fix in the local clone</span>
+                </td>
+            </tr>
+            <tr>
+                <th>Type-check</th>
+                <td>
+                    <span class="value">✓ <code>pnpm run type-check:ts-instance</code></span>
+                </td>
+            </tr>
+            <tr>
+                <th>Runs</th>
+                <td>
+                    <span class="value"><code>pnpm run dev</code> → <code>/instance.html</code></span>
+                    <span class="detail">— or built <code>dist/instance.html</code></span>
+                </td>
+            </tr>
+            <tr>
+                <th>Notes</th>
+                <td>
+                    <span class="detail">The canonical instance-mode ESM flow. See <code>P5_UPSTREAM_ISSUE_DRAFT.md</code> for the proposed p5 type-generator fix.</span>
+                </td>
+            </tr>
+        </table>
         <div id="app"></div>
         <script type="module" src="/ts-instance/main.ts"></script>
     </body>

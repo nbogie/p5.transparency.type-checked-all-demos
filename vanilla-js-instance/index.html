@@ -3,22 +3,105 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>p5 vanilla JS instance mode, type-checked</title>
+        <link rel="stylesheet" href="../styles.css" />
+        <title>vanilla-js-instance — mixed-p5-typedecls-demo</title>
     </head>
     <body>
         <p><a href="../vanilla-js.html">← back to vanilla-js index</a></p>
+        <h1>vanilla-js-instance</h1>
+        <table class="metadata">
+            <tr>
+                <th>Sketch language</th>
+                <td>
+                    <span class="value">JavaScript</span>
+                    <span class="detail">— type-checked via jsconfig <code>checkJs</code>; entry <code>sketch.js</code> via <code>&lt;script&gt;</code></span>
+                </td>
+            </tr>
+            <tr>
+                <th>p5 mode</th>
+                <td>
+                    <span class="value">instance</span>
+                    <span class="detail">— <code>new p5(sketch)</code>, methods called on the <code>p</code> parameter</span>
+                </td>
+            </tr>
+            <tr>
+                <th>Type config</th>
+                <td>
+                    <span class="value"><code>vanilla-js-instance/jsconfig.json</code></span>
+                    <span class="detail">— <code>types: ["p5", "p5.transparency"]</code>; a local <code>types.d.ts</code> provides the <code>P5Instance</code> alias used in JSDoc</span>
+                </td>
+            </tr>
+            <tr>
+                <th>p5 runtime</th>
+                <td>
+                    <span class="value">CDN jsdelivr</span>
+                    <span class="detail">— <code>cdn.jsdelivr.net/npm/p5@2.2.3/lib/p5.min.js</code>, upstream</span>
+                </td>
+            </tr>
+            <tr>
+                <th>p5 types</th>
+                <td>
+                    <span class="value"><code>node_modules/p5</code></span>
+                    <span class="detail">— with the pnpm patch applied; used only by tsc</span>
+                </td>
+            </tr>
+            <tr>
+                <th>p5.transparency runtime</th>
+                <td>
+                    <span class="value">CDN jsdelivr</span>
+                    <span class="detail">— <code>cdn.jsdelivr.net/npm/p5.transparency@0.0.17/p5.transparency.min.js</code>, upstream</span>
+                </td>
+            </tr>
+            <tr>
+                <th>p5.transparency types</th>
+                <td>
+                    <span class="value"><code>node_modules/p5.transparency</code></span>
+                    <span class="detail">— from local-clone tarball; used only by tsc</span>
+                </td>
+            </tr>
+            <tr>
+                <th>Type patches</th>
+                <td>
+                    <span class="value">p5, p5.transparency</span>
+                    <span class="detail">— p5 via pnpm patch; p5.transparency via rewritten <code>.d.ts</code> in the local-clone tarball</span>
+                </td>
+            </tr>
+            <tr>
+                <th>Runtime patches</th>
+                <td>
+                    <span class="value">none</span>
+                    <span class="detail">— scripts load upstream CDN builds</span>
+                </td>
+            </tr>
+            <tr>
+                <th>Project workaround</th>
+                <td>
+                    <span class="value"><code>types.d.ts</code>: <code>P5Instance = InstanceType&lt;Window["p5"]&gt;</code></span>
+                    <span class="detail">— also <code>var p5: Window["p5"]</code>, working around p5 v2's <code>export as namespace p5</code> which leaves the UMD global as a module namespace with no construct signatures</span>
+                </td>
+            </tr>
+            <tr>
+                <th>Type-check</th>
+                <td>
+                    <span class="value">✓ <code>pnpm run type-check:vanilla-js-instance</code></span>
+                </td>
+            </tr>
+            <tr>
+                <th>Runs</th>
+                <td>
+                    <span class="value">open <code>index.html</code> directly</span>
+                    <span class="detail">— or serve this folder</span>
+                </td>
+            </tr>
+            <tr>
+                <th>Notes</th>
+                <td>
+                    <span class="detail">Requires <code>node_modules</code> to exist for type-check (not ideal for a truly standalone demo). See <code>vanilla-js-instance-standalone</code> for a fully self-contained instance-mode variant.</span>
+                </td>
+            </tr>
+        </table>
         <script src="https://cdn.jsdelivr.net/npm/p5@2.2.3/lib/p5.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/p5.transparency@0.0.17/p5.transparency.min.js"></script>
         <script src="sketch.js"></script>
-
-        This instance-mode typechecked js sketch setup requires p5 and
-        p5.transparency be available in node_modules for type-checking purposes.
-        not ideal.
-        <br />
-        eventually see
-        <a href="../vanilla-js-instance-standalone"
-            >../vanilla-js-instance-standalone</a
-        >
-        but that is not yet working.
     </body>
 </html>

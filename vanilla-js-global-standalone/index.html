@@ -3,21 +3,98 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>p5 vanilla JS instance mode, type-checked</title>
+        <link rel="stylesheet" href="../styles.css" />
+        <title>vanilla-js-global-standalone — mixed-p5-typedecls-demo</title>
     </head>
     <body>
         <p><a href="../vanilla-js.html">← back to vanilla-js index</a></p>
+        <h1>vanilla-js-global-standalone</h1>
+        <table class="metadata">
+            <tr>
+                <th>Sketch language</th>
+                <td>
+                    <span class="value">JavaScript</span>
+                    <span class="detail">— type-checked via jsconfig <code>checkJs</code>; entry <code>sketch.js</code> via <code>&lt;script&gt;</code></span>
+                </td>
+            </tr>
+            <tr>
+                <th>p5 mode</th>
+                <td>
+                    <span class="value">global</span>
+                    <span class="detail">— globals provided by <code>&lt;script&gt;</code> tags</span>
+                </td>
+            </tr>
+            <tr>
+                <th>Type config</th>
+                <td>
+                    <span class="value"><code>vanilla-js-global-standalone/jsconfig.json</code></span>
+                    <span class="detail">— no <code>types</code> directive; <code>include</code> covers <code>**/*.js</code> and <code>types/*.d.ts</code>, so the bundled type files are picked up directly</span>
+                </td>
+            </tr>
+            <tr>
+                <th>p5 runtime</th>
+                <td>
+                    <span class="value">CDN jsdelivr</span>
+                    <span class="detail">— <code>cdn.jsdelivr.net/npm/p5@2.2.3/lib/p5.min.js</code>, upstream</span>
+                </td>
+            </tr>
+            <tr>
+                <th>p5 types</th>
+                <td>
+                    <span class="value">bundled in <code>types/</code></span>
+                    <span class="detail">— <code>types/p5.d.ts</code> + <code>types/global.d.ts</code>, copies of upstream 2.2.3, <strong>unpatched</strong></span>
+                </td>
+            </tr>
+            <tr>
+                <th>p5.transparency runtime</th>
+                <td>
+                    <span class="value">CDN jsdelivr</span>
+                    <span class="detail">— <code>cdn.jsdelivr.net/npm/p5.transparency@0.0.17/p5.transparency.min.js</code>, upstream</span>
+                </td>
+            </tr>
+            <tr>
+                <th>p5.transparency types</th>
+                <td>
+                    <span class="value">bundled in <code>types/</code></span>
+                    <span class="detail">— <code>types/p5.transparency.d.ts</code>, global augmentations only</span>
+                </td>
+            </tr>
+            <tr>
+                <th>Type patches</th>
+                <td>
+                    <span class="value">none</span>
+                    <span class="detail">— bundled type files are plain copies; no pnpm patch is consulted</span>
+                </td>
+            </tr>
+            <tr>
+                <th>Runtime patches</th>
+                <td>
+                    <span class="value">none</span>
+                    <span class="detail">— scripts load upstream CDN builds</span>
+                </td>
+            </tr>
+            <tr>
+                <th>Type-check</th>
+                <td>
+                    <span class="value">✓ <code>pnpm run type-check:vanilla-js-global-standalone</code></span>
+                </td>
+            </tr>
+            <tr>
+                <th>Runs</th>
+                <td>
+                    <span class="value">open <code>index.html</code> directly</span>
+                    <span class="detail">— no tooling needed</span>
+                </td>
+            </tr>
+            <tr>
+                <th>Notes</th>
+                <td>
+                    <span class="detail">Works <em>without</em> the p5 type patch because global-mode augmentation happens via <code>declare global { interface p5 }</code>, which doesn't require p5's class to be a named export. Most portable variant; contrast with <code>vanilla-js-instance-standalone</code>, which needs a project-level type-level workaround to get the same end result in instance mode.</span>
+                </td>
+            </tr>
+        </table>
         <script src="https://cdn.jsdelivr.net/npm/p5@2.2.3/lib/p5.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/p5.transparency@0.0.17/p5.transparency.min.js"></script>
         <script src="sketch.js"></script>
-        This project contains the standard (unpatched) p5 type-declaration
-        files, in types/
-        <br />
-        and a claude-suggested p5.transparency.d.ts in types/
-        <br />
-        For global mode js type-checked against p5 types and p5.transparency
-        types.
-        <br />
-        This doesn't test the proposed patched p5 type-declarations.
     </body>
 </html>
