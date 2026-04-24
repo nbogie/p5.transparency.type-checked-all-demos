@@ -1,7 +1,5 @@
-// Global-mode p5 sketch with p5.transparency addon
+// Global-mode p5 typescript sketch with p5.transparency addon
 
-// Load p5 in global mode: this registers all p5 APIs on window and the
-// `declare global {}` block in p5/global brings types into scope globally.
 import p5 from "p5/global";
 import transparency from "p5.transparency";
 (p5 as any).registerAddon(transparency);
